@@ -1,11 +1,11 @@
+#Get the protein sequence using DNA sequence 
 a<-scan(file = "seq.txt", what = character() )
+#Scan file of DNA sequence in same directory
 protein=NULL
 a<-toupper(a)
-a
 i=1
 while(i<nchar(a)) {
   x<-substr(a,i,i+2)
-  # print(x)
   if(x=="TTT"||x=="TTC")
   {protein<-append(protein,"PHE")}
   if(x=="TTA"||x=="TTG")
@@ -58,5 +58,4 @@ while(i<nchar(a)) {
   
   i=i+3
   }
-
 print(protein)
