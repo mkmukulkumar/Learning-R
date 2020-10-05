@@ -1,3 +1,4 @@
+#Get list of prime number betwwen 1 to 100
 var=1:100
 for (i in var) {
   j=1
