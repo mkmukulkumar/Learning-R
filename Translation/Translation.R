@@ -1,5 +1,5 @@
 #Get the protein sequence using DNA sequence 
-a<-scan(file = "seq_for_translation.txt", what = character() )
+a<-scan(file = "DNA Sequence.txt", what = character() )
 #Scan file of DNA sequence in same directory
 protein=NULL
 a<-toupper(a)
