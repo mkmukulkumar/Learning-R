@@ -1,3 +1,4 @@
+#Find whether number is Palindrome or not
 a=134567
 num=nchar(a)
 place=10
