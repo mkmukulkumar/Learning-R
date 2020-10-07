@@ -1,7 +1,7 @@
 mismatch=-1
 match=5
 gap=-2
-seqR="TTTCA"
+seqR="CTTCA"
 seqC="CTACA"
 x=NULL
 y=NULL
@@ -23,28 +23,6 @@ for (i in 0:nchar(seqR)) {
 for (i in 0:nchar(seqC)) {
   dp[i+1,1]=i*gap
 }
-
-matchval=0
-mismatchval=0
-vgapval=0
-hgapval=0
-# 
-# 
-# # for (i in 2:nchar(seqR))
-# #   {
-# #         for (j in 2:nchar(seqC))
-# #         {
-# #           if(x[1]==y[1])
-# #           {matchval=dp[i-1][j-1]+match}
-# #           if(x[1]!=y[1])
-# #           {mismatchval=dp[i-1][j-1]+mismatch}
-# #           vgapval=dp[i-1][j]+gap
-# #           hgapval=dp[i][j-1]+gap
-# # 
-# #         }
-# # 
-# # }
-# 
 
 i=2
 j=2
