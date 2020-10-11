@@ -1,8 +1,8 @@
 mismatch=-1
 match=5
 gap=-2
-seqR="CTTCA"
-seqC="CTAC"
+seqR="AGGGCT"
+seqC="AGGCA"
 x=NULL
 y=NULL
 newseqR=NULL
@@ -56,40 +56,57 @@ high
 i=match( high , (dp[,nchar(seqR)+1]) )
 j=match( high , (dp[nchar(seqC)+1,]) )
 k=0
+
 while(is.na(i))
-{ 
+{ if(k>0)
+  { 
+    newseqC<-append(newseqC,"-")
+    newseqR<-append(newseqR,x[(nchar(seqR)+1-k)])
+  }
   i=match( high , (dp[,nchar(seqR)+1-k]) )
   k=k+1
+  
 }
-k=0
+l=0
 while(is.na(j))
-{ 
-  j=match( high , (dp[nchar(seqC)+1-k,]) )
-  k=k+1
+{ if(l>0)
+  {
+  newseqR<-append(newseqR,"-")
+  newseqC<-append(newseqC,y[nchar(seqC)+1-l])
+  }
+  j=match( high , (dp[nchar(seqC)+1-l,]) )
+  l=l+1
 }
+# 
+# j=nchar(seqC)+1
+# i=nchar(seqR)+1
 
-while (i!=0&&j!=0) {
-
-  if (dp[i,j]==(dp[i-1,j-1]+match)||dp[i,j]==(dp[i-1,j-1]+mismatch))
-  {
-    newseqR<-append(newseqR,x[i-1])
-    newseqC<-append(newseqC,y[j-1])
-    i=i-1
-    j=j-1
-  }
-  else if (dp[i,j]==dp[i-1,j]+gap)
-  {
-    newseqR<-append(newseqR,x[i-1])
-    newseqC<-append(newseqC,"-")
-    i=i-1
-  }
-  else if (dp[i,j]==dp[i,j-1]+gap)
+while (i!=1||j!=1) {
+  count=0
+  if (dp[i,j]==dp[i-1,j]+gap&&count==0)
   {
     newseqR<-append(newseqR,"-")
     newseqC<-append(newseqC,y[i-1])
+    i=i-1
+    dp[i,j]
+    count=count+1
+  }
+  if (dp[i,j]==dp[i,j-1]+gap&&count==0)
+  {
+    newseqR<-append(newseqR,x[j-1])
+    newseqC<-append(newseqC,"-")
     j=j-1
-    }
-
-
-}
+    dp[i,j]
+    count=count+1
+  }
+  if ((dp[i,j]==(dp[i-1,j-1]+match)|| dp[i,j]==(dp[i-1,j-1]+mismatch))&&count==0)
+  {
+    newseqR<-append(newseqR,x[j-1])
+    newseqC<-append(newseqC,y[i-1])
+    i=i-1
+    j=j-1
+    dp[i,j]
+    count=count+1
+  }
+}  
 
