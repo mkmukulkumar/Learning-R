@@ -49,8 +49,9 @@ while (i<=nchar(seqC)+1) {
   i=i+1
 }
 
-#Backtracking
+#tracing Back
 
+#finding start index
 high=max(c(dp[nchar(seqC)+1,],dp[,nchar(seqR)+1]))
 high
 i=match( high , (dp[,nchar(seqR)+1]) )
@@ -77,10 +78,8 @@ while(is.na(j))
   j=match( high , (dp[nchar(seqC)+1-l,]) )
   l=l+1
 }
-# 
-# j=nchar(seqC)+1
-# i=nchar(seqR)+1
 
+#finding path and getting aligned sequences
 while (i!=1||j!=1) {
   count=0
   if (dp[i,j]==dp[i-1,j]+gap&&count==0)
@@ -109,4 +108,7 @@ while (i!=1||j!=1) {
     count=count+1
   }
 }  
+
+rev(newseqC)
+rev(newseqR)
 
