@@ -1,5 +1,5 @@
 #Get the protein sequence using DNA sequence 
-rd<-readline(prompt = "DNA sequence=")
+rd<-scan(file = "DNA Sequence.txt", what = character())
 #rd takes input of DNA sequence from user
 rd<-toupper(rd)
 protein=NULL
