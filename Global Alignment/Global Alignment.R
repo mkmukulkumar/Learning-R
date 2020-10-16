@@ -43,7 +43,7 @@ while (i<=nchar(seqC)+1) {
     hgapval=dp[i,j-1]+gap
     
     dp[i,j]=max(c(matchval,mismatchval,vgapval,hgapval))
-    print(dp[i,j])
+    # print(dp[i,j])
     j=j+1
   }
   i=i+1
@@ -53,7 +53,6 @@ while (i<=nchar(seqC)+1) {
 
 #finding start index
 high=max(c(dp[nchar(seqC)+1,],dp[,nchar(seqR)+1]))
-high
 i=match( high , (dp[,nchar(seqR)+1]) )
 j=match( high , (dp[nchar(seqC)+1,]) )
 k=0
@@ -87,7 +86,6 @@ while (i!=1||j!=1) {
     newseqR<-append(newseqR,"-")
     newseqC<-append(newseqC,y[i-1])
     i=i-1
-    dp[i,j]
     count=count+1
   }
   if (dp[i,j]==dp[i,j-1]+gap&&count==0)
@@ -95,7 +93,6 @@ while (i!=1||j!=1) {
     newseqR<-append(newseqR,x[j-1])
     newseqC<-append(newseqC,"-")
     j=j-1
-    dp[i,j]
     count=count+1
   }
   if ((dp[i,j]==(dp[i-1,j-1]+match)|| dp[i,j]==(dp[i-1,j-1]+mismatch))&&count==0)
@@ -104,7 +101,6 @@ while (i!=1||j!=1) {
     newseqC<-append(newseqC,y[i-1])
     i=i-1
     j=j-1
-    dp[i,j]
     count=count+1
   }
 }  
